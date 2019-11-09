@@ -1,0 +1,4 @@
+HSBGPG Human gene for bone gla protein (BGP): 
+Counter({'C': 409, 'G': 373, 'T': 232, 'A': 217})
+HSGLTH1 Human theta 1-globin gene: 
+Counter({'C': 362, 'G': 357, 'T': 155, 'A': 146})
