@@ -3,12 +3,12 @@
 
 | Sort | average price| min price | max price| region| country|average score|
 | -----|:----------:| :----:| :-------------: |:-------:| :--:|:--:|
-| `Gew[üu]rztraminer ` |26.22 | 6 | 197| Alsace| France    |88.59   |
-|` Riesling`           | 31.95| 5 | 775| Finger Lakes| Germany    |89.45    |
-| `Merlot`             | 29.54| 4 | 625| Columbia Valley| US    | 87.21    |
+| `Gew[üu]rztraminer ` |26.17 | 6 | 197| Alsace| France    |88.56   |
+|` Riesling`           | 32.6| 5 | 775| Finger Lakes| Germany    |89.48    |
+| `Merlot`             | 29.27| 4 | 625| Columbia Valley| US    | 87.16    |
 | `Madera`             | -| - | -| -| -    |-    |
-| `Tempranillo`        | 31.09| 4 | 600| Rioja| Spain    |87.5    |
-| `Red Blend`          | 35.88| 5 | 500| Columbia Valley| Italy    |88.38   |
+| `Tempranillo`        | 31.14| 4 | 600| Rioja| Spain    |87.47    |
+| `Red Blend`          | 36.09| 5 | 500| Columbia Valley| Italy    |88.37   |
 
 ## Общая
 * Most expensive wine (3300$):
@@ -33,7 +33,7 @@
     * Tenuta dell'Ornellaia 2007 Masseto Merlot (Toscana)
     * Verité 2007 La Muse Red (Sonoma County)
     * Casa Ferreirinha 2008 Barca-Velha Red (Douro)
-    * Château L\u00e9oville Las Cases 2010  Saint-Julien
+    * Château Léoville Las Cases 2010  Saint-Julien
     * Casanova di Neri 2007 Cerretalto  (Brunello di Montalcino)
     * Krug 2002 Brut  (Champagne)
     * Louis Roederer 2008 Cristal Vintage Brut  (Champagne)
@@ -53,16 +53,11 @@
     * Watts 2004 Watts Vineyard Cabernet Franc (Lodi)
     * French Hill 2006 Grand Reserve Petit Verdot (California)
     * усталь(
-* Most expensive country (77$): Switzerland
-* Cheapest_country (8$): Ukraine
-* Most rated countries (92 points): 
-    * France
-    * US
-    * Portugal
-    * Italy
-    * Australia
+* Most expensive country (73$): Switzerland
+* Cheapest_country (8$): Slovakia
+* Most rated countries (92 points): England
 * Underrated country (42 points): Egypt
-* Most active commentator (25788 comments): Roger Voss
+* Most active commentator (23561 comments): Roger Voss
     
 
   

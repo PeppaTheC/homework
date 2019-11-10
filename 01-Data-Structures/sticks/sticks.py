@@ -10,7 +10,12 @@ def object_to_json_string(data) -> str:
     elif data is False:
         return 'false'
     elif isinstance(data, int) or isinstance(data, float):
-        return f'{data}'
+        if data == float('inf'):
+            return 'Infinity'
+        elif data == float('-inf'):
+            return '-Infinity'
+        else:
+            return f'{data}'
     elif isinstance(data, str):
         return f'"{data}"'
     elif isinstance(data, list):
@@ -47,7 +52,9 @@ def parse_array(string: str, index: int) -> (list, int):
             value, index = parse_object(string, index + 1)
             array.append(value)
         elif string[index] == '"':
-            read_word(string, index + 1)
+            value, index = parse_data(string, index)
+            array.append(value)
+            index += 1
         else:
             index += 1
     return array, index + 1
@@ -89,6 +96,10 @@ def parse_data(string: str, index: int):
         return True, index + 4
     elif nextchar == 'f' and string[index:index + 5] == 'false':
         return False, index + 5
+    elif nextchar == 'I' and string[index:index + 8] == 'Infinity':
+        return float('inf'), index + 8
+    elif nextchar == '-' and string[index:index + 9] == '-Infinity':
+        return float('-inf'), index + 9
     else:
         return parse_number(string, index)
 
@@ -101,6 +112,7 @@ def parse_number(string: str, index: int):
     while string[index] != ',' and string[index] != '}':
         word += string[index]
         index += 1
+    index  -=1
     if set(word) & set(symbols_of_float):
         return float(word), index
     else:
@@ -152,7 +164,7 @@ def merge_two_lists(list1: list, list2: list) -> list:
         if value not in set_of_values:
             merged_list.append(item)
             set_of_values.add(value)
-    return sum
+    return merged_list
 
 
 def find_max(array: Counter, max: bool = True):
