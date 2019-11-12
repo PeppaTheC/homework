@@ -64,7 +64,7 @@ with open('statistic.data', 'w') as statistic_file:
 
 # Отображение статистики
 for gene in genes:
-    fig1 = plt.figure()
+    plt.figure()
     for name in gene['statistic']:
         plt.bar(x=name, height=(gene['statistic'][name]))
     plt.title(f'Статистика генома: {gene["name"]}')
