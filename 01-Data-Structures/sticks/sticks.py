@@ -274,8 +274,9 @@ for variety in varieties_list:
         statistics[variety]['most_common_region'] = statistics[variety]['most_common_region'].most_common(1)[0][0]
 
 print("done_5")
-country_price_counter = Counter({key: round(sum(value) / max(len(value), 2)) for key, value in country_price.items()})
-country_score_counter = Counter({key: round(sum(value) / max(len(value), 2)) for key, value in country_score.items()})
+print(country_price)
+country_price_counter = Counter({key: round(sum(value) / len(value), 2) for key, value in country_price.items()})
+country_score_counter = Counter({key: round(sum(value) / len(value), 2) for key, value in country_score.items()})
 
 common_statistics = {'most_expensive_wine': find_max(price_counter),
                      'cheapest_wine': find_max(price_counter, False),
