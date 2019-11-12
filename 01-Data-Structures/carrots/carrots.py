@@ -1,5 +1,6 @@
 import re
 from collections import Counter
+import matplotlib.pyplot as plt
 
 
 def translate_from_dna_to_rna(dna: str) -> str:
@@ -58,8 +59,19 @@ with open(r'files/dna.fasta', 'r') as fasta_file:
 with open('statistic.data', 'w') as statistic_file:
     for gene in genes:
         statistic_file.write(f'{gene["name"]}: \n')
-        gene['statistic'] = str(count_nucleotides(gene['dna_sequence']))
-        statistic_file.writelines(gene['statistic'] + '\n')
+        gene['statistic'] = dict(count_nucleotides(gene['dna_sequence']))
+        statistic_file.writelines(f'{gene["statistic"]}\n')
+
+# Отображение статистики
+for gene in genes:
+    fig1 = plt.figure()
+    for name in gene['statistic']:
+        plt.bar(x=name, height=(gene['statistic'][name]))
+    plt.title(f'Статистика генома: {gene["name"]}')
+    plt.xlabel('Нуклеотид')
+    plt.ylabel('Частота')
+    # plt.show()
+    plt.savefig(f'Статистика генома-{gene["name"]}', dpi=600)
 
 with open('rna.data', 'w') as rna_file:
     for gene in genes:
@@ -73,5 +85,3 @@ with open('protein.data', 'w') as protein_file:
         gene['proteins'] = translate_rna_to_protein(gene['rna_sequence'])
         for number, protein in enumerate(gene['proteins']):
             protein_file.write(f'protein{number}: {protein}\n')
-
-
