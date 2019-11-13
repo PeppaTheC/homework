@@ -2,11 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="264b8660-9946-4fb4-80dc-185e282e29bf" name="Default Changelist" comment="v0.2">
+      <change afterPath="$PROJECT_DIR$/01-Data-Structures/carrots/input_data/dna.fasta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/01-Data-Structures/carrots/input_data/rna_codon_table.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/01-Data-Structures/carrots/output_data/graphics/Statistics of gene-HSBGPG Human gene for bone gla protein (BGP).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/01-Data-Structures/carrots/output_data/graphics/Statistics of gene-HSGLTH1 Human theta 1-globin gene.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/01-Data-Structures/carrots/output_data/protein.data" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/01-Data-Structures/carrots/output_data/rna.data" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/01-Data-Structures/sticks/input_data/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/01-Data-Structures/sticks/input_data/winedata_1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/01-Data-Structures/sticks/input_data/winedata_2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/01-Data-Structures/sticks/output_data/stats.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/01-Data-Structures/sticks/output_data/stats.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/01-Data-Structures/sticks/output_data/winedata_full.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/01-Data-Structures/sticks/stats.json" beforeDir="false" afterPath="$PROJECT_DIR$/01-Data-Structures/sticks/stats.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/01-Data-Structures/sticks/stats.md" beforeDir="false" afterPath="$PROJECT_DIR$/01-Data-Structures/sticks/stats.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-Data-Structures/carrots/carrots.py" beforeDir="false" afterPath="$PROJECT_DIR$/01-Data-Structures/carrots/carrots.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-Data-Structures/carrots/files/dna.fasta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-Data-Structures/carrots/files/rna_codon_table.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-Data-Structures/carrots/protein.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-Data-Structures/carrots/rna.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-Data-Structures/carrots/statistic.data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-Data-Structures/carrots/Статистика генома-HSBGPG Human gene for bone gla protein (BGP).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-Data-Structures/carrots/Статистика генома-HSGLTH1 Human theta 1-globin gene.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-Data-Structures/sticks/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-Data-Structures/sticks/stats.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-Data-Structures/sticks/stats.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/01-Data-Structures/sticks/sticks.py" beforeDir="false" afterPath="$PROJECT_DIR$/01-Data-Structures/sticks/sticks.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/01-Data-Structures/sticks/winedata_full.json" beforeDir="false" afterPath="$PROJECT_DIR$/01-Data-Structures/sticks/winedata_full.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-Data-Structures/sticks/winedata_1.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-Data-Structures/sticks/winedata_2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-Data-Structures/sticks/winedata_full.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-Data-Structures/sticks/~$README.md" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,8 +47,8 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="last_opened_file_path" value="C:/Program Files (x86)/Python38-32/Lib/json" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -113,7 +137,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573342317212</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="v0.2">
+      <created>1573351772629</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1573351772629</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -132,15 +163,21 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="v0.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="v0.1" />
+    <MESSAGE value="v0.2" />
+    <option name="LAST_COMMIT_MESSAGE" value="v0.2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/01-Data-Structures/sticks/sticks.py</url>
-          <line>54</line>
+          <line>55</line>
           <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/01-Data-Structures/sticks/sticks.py</url>
+          <line>137</line>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

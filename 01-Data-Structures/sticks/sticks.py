@@ -2,7 +2,8 @@ from collections import Counter
 
 
 def object_to_json_string(data) -> str:
-    """Функция конвертирует данные в json строку"""
+    """Function converts data into a string with json
+        data structure"""
     if data is None:
         return 'null'
     elif data is True:
@@ -33,15 +34,15 @@ def object_to_json_string(data) -> str:
 
 
 def json_dump(data, file):
-    """Функция записывает данные в файл в
-        формате json строки"""
+    """Function writes data to file in
+    json format"""
     string = object_to_json_string(data)
     file.write(string)
 
 
 def parse_array(string: str, index: int) -> (list, int):
-    """Функция преобразует массив cтроки json в
-        в python список"""
+    """Function convert string with json array into
+        python list data"""
     global parse_object
     array = []
     while string[index] != ']':
@@ -61,8 +62,8 @@ def parse_array(string: str, index: int) -> (list, int):
 
 
 def parse_object(string: str, index: int) -> (dict, int):
-    """Функция преобразует словарь cтроки json в
-        в python словарь"""
+    """Function convert tring with json object into
+        python dictionary"""
     global parse_array
     json_object = {}
     while string[index] != '}':
@@ -85,8 +86,8 @@ def parse_object(string: str, index: int) -> (dict, int):
 
 
 def parse_data(string: str, index: int):
-    """Функция конвертируте данные json в
-    струкруры данные в python"""
+    """Function convert string with json type data
+    into python type data"""
     nextchar = string[index]
     if nextchar == '"':
         return read_word(string, index + 1)
@@ -105,14 +106,14 @@ def parse_data(string: str, index: int):
 
 
 def parse_number(string: str, index: int):
-    """Функция конвертирует числа json
-    в числа python"""
+    """Function convert string with json numbers
+    into python numbers data type"""
     word = ''
     symbols_of_float = '.,Ee'
     while string[index] != ',' and string[index] != '}':
         word += string[index]
         index += 1
-    index  -=1
+    index -= 1
     if set(word) & set(symbols_of_float):
         return float(word), index
     else:
@@ -120,7 +121,7 @@ def parse_number(string: str, index: int):
 
 
 def read_word(string: str, index: int):
-    """Функция читает слово json"""
+    """Function reads json word"""
     word = ''
     while string[index] != '"':
         word += string[index]
@@ -131,17 +132,16 @@ def read_word(string: str, index: int):
 
 
 def pass_spacing(string: str, index: int) -> int:
-    """Функция перемещает указатель с отступов"""
+    """The function moves the pointer from indentation"""
     while string[index] == ' ' or string[index] == '\n':
         index += 1
     return index
 
 
 def json_loads(file):
-    """Функция за счтитывает json данные из файла,
-     затем с помощью указателя переводит в струкруты
-     данных python (время работы O(n))
-     """
+    """Function reads json data from the file,
+        then uses the pointer translates it into
+        Python data structure (running time O(n))"""
     string = file.read()
     index = 0
     next_char = string[index]
@@ -155,7 +155,7 @@ def json_loads(file):
 
 
 def merge_two_lists(list1: list, list2: list) -> list:
-    """Функция сливает два списка без повторений"""
+    """Function merges two lists without repetitions"""
     sum = list1 + list2
     set_of_values = set()
     merged_list = []
@@ -168,8 +168,8 @@ def merge_two_lists(list1: list, list2: list) -> list:
 
 
 def find_max(array: Counter, max: bool = True):
-    """Функция возвращает максимальные занчения в массиве
-    или последовательность с максимальными занчения"""
+    """Function returns the maximum/minimum values in the array
+        or a sequence with maximum/minimum values"""
     if max:
         max = array.most_common(1)[0][1]
         max_items = [item for item in array if array[item] == max]
@@ -180,19 +180,19 @@ def find_max(array: Counter, max: bool = True):
         return min_items if len(min_items) > 1 else min_items[0]
 
 
-with open('winedata_1.json', 'r') as json_file:
+with open('input_data/winedata_1.json', 'r') as json_file:
     wine_data_1 = json_loads(json_file)
 
 print("done_1")
 
-with open('winedata_2.json', 'r') as json_file:
+with open('input_data/winedata_2.json', 'r') as json_file:
     wine_data_2 = json_loads(json_file)
 
 print("done_2")
 wine_data_full = merge_two_lists(wine_data_1, wine_data_2)
 wine_data_full.sort(key=lambda obj: (-obj['price'] if obj['price'] else 0, obj['variety'] if obj['variety'] else ''))
 
-with open('winedata_full.json', 'w') as json_file:
+with open('output_data/winedata_full.json', 'w') as json_file:
     json_dump(wine_data_full, json_file)
 
 print("done_3")
@@ -274,9 +274,9 @@ for variety in varieties_list:
         statistics[variety]['most_common_region'] = statistics[variety]['most_common_region'].most_common(1)[0][0]
 
 print("done_5")
-print(country_price)
-country_price_counter = Counter({key: round(sum(value) / len(value), 2) for key, value in country_price.items()})
-country_score_counter = Counter({key: round(sum(value) / len(value), 2) for key, value in country_score.items()})
+
+country_price_counter = Counter({key: round(sum(value) / len(value), 5) for key, value in country_price.items()})
+country_score_counter = Counter({key: round(sum(value) / len(value), 5) for key, value in country_score.items()})
 
 common_statistics = {'most_expensive_wine': find_max(price_counter),
                      'cheapest_wine': find_max(price_counter, False),
@@ -291,5 +291,5 @@ common_statistics = {'most_expensive_wine': find_max(price_counter),
 statistics.update(common_statistics)
 stats = {'statistics': statistics}
 
-with open('stats.json', 'w') as json_file:
+with open('output_data/stats.json', 'w') as json_file:
     json_dump(stats, json_file)
