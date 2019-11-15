@@ -81,11 +81,3 @@ def test():
 
 if __name__ == '__main__':
     test()
-    # from letters_range import letters_range
-    #
-    # transliterations = {'l': 7, 'o': 0}
-    # letters_range_with_transliteration = modified_func(letters_range, **transliterations)
-    # print(letters_range_with_transliteration('g', 'p'))
-    # letters_range_to_h = modified_func(letters_range, 'h')
-    # print(letters_range_to_h())
-    # # modified_func()
