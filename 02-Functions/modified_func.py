@@ -5,12 +5,27 @@ def modified_func(func, *fixated_args, **fixated_kwargs):
     def wrapper(*args, **kwargs):
         wrapper.__name__ = func.__name__
         try:
+            params = inspect.signature(func).bind_partial(*fixated_args, **fixated_kwargs)
+            params.apply_defaults()
+        except ValueError:
+            key_param = 'None'
+        else:
+            key_param = ""
+            for param in params.arguments:
+                if param in fixated_kwargs:
+                    key_param += f"{param} = {fixated_kwargs[param]} ,"
+            if key_param:
+                key_param = key_param[:-2]
+            else:
+                key_param = 'None'
+        try:
             code = inspect.getsource(func)
         except TypeError:
             code = "it is builtin_function"
         wrapper.__doc__ = f"""A func implementation of {wrapper.__name__}
             with pre-applied arguments being:
-            {fixated_args} и {fixated_kwargs}
+            fixated_args:{fixated_args} and fixated_kwargs:{fixated_kwargs},
+            where definitions parameters are: {key_param}
             source_code: {code}"""
         if not args and not kwargs:
             return func(*fixated_args, **fixated_kwargs)
@@ -32,10 +47,10 @@ def test():
     new_modified_func = make_it_count(modified_func, 'count')
 
     from letters_range import letters_range
-    transliterations = {'l': 7, 'o': 0}
+    transliterations = {'l': 7, 'o': 0, 'start': 'g', 'stop' :'p'}
     letters_range_with_transliteration = new_modified_func(letters_range, **transliterations)
     letters_range_to_h = new_modified_func(letters_range, 'h')
-    assert letters_range_with_transliteration('g', 'p') == ['g', 'h', 'i', 'j', 'k', '7', 'm', 'n', '0']
+    assert letters_range_with_transliteration() == ['g', 'h', 'i', 'j', 'k', '7', 'm', 'n', '0']
     assert letters_range_to_h() == ['a', 'b', 'c', 'd', 'e', 'f', 'g']
 
     from atom import atom
@@ -66,3 +81,11 @@ def test():
 
 if __name__ == '__main__':
     test()
+    # from letters_range import letters_range
+    #
+    # transliterations = {'l': 7, 'o': 0}
+    # letters_range_with_transliteration = modified_func(letters_range, **transliterations)
+    # print(letters_range_with_transliteration('g', 'p'))
+    # letters_range_to_h = modified_func(letters_range, 'h')
+    # print(letters_range_to_h())
+    # # modified_func()

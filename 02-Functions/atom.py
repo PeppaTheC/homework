@@ -4,7 +4,6 @@ def atom(x=None) -> tuple:
 
     def get_value():
         """Return value x"""
-        nonlocal x
         return x
 
     def set_value(new_value):
