@@ -1,12 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="264b8660-9946-4fb4-80dc-185e282e29bf" name="Default Changelist" comment="" />
+    <list default="true" id="264b8660-9946-4fb4-80dc-185e282e29bf" name="Default Changelist" comment="new_homework">
+      <change afterPath="$PROJECT_DIR$/03-fp-decorator/collatz_steps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/03-fp-decorator/is_armstrong.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/03-fp-decorator/projecteuler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/homework.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/homework.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -32,8 +46,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.modified_func">
-    <configuration name="atom" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.projecteuler">
+    <configuration name="collatz_steps" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="homework" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -41,11 +55,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/02-Functions" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/03-fp-decorator" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/02-Functions/atom.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/03-fp-decorator/collatz_steps.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -54,7 +68,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="letters_range" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="is_armstrong" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="homework" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -62,11 +76,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/02-Functions" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/03-fp-decorator" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/02-Functions/letters_range.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/03-fp-decorator/is_armstrong.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -75,7 +89,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="make_it_count" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="make_cache" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="homework" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -83,11 +97,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/02-Functions" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/03-fp-decorator" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/02-Functions/make_it_count.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/03-fp-decorator/make_cache.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -117,7 +131,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="sticks" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="projecteuler" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="homework" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -125,11 +139,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/01-Data-Structures/sticks" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/03-fp-decorator" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/01-Data-Structures/sticks/sticks.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/03-fp-decorator/projecteuler.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -140,11 +154,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.projecteuler" />
+        <item itemvalue="Python.make_cache" />
+        <item itemvalue="Python.collatz_steps" />
+        <item itemvalue="Python.is_armstrong" />
         <item itemvalue="Python.modified_func" />
-        <item itemvalue="Python.make_it_count" />
-        <item itemvalue="Python.letters_range" />
-        <item itemvalue="Python.atom" />
-        <item itemvalue="Python.sticks" />
       </list>
     </recent_temporary>
   </component>
