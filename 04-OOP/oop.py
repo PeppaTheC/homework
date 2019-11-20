@@ -2,14 +2,14 @@ import datetime
 from dataclasses import dataclass
 
 
-@dataclass(frozen=False)
+@dataclass()
 class Homework:
     __slots__ = {'text', 'deadline', 'created'}
     text: str
-    deadline: datetime.timedelta
+    deadline: int
 
     def __post_init__(self):
-        self.deadline = datetime.timedelta(days=float(self.deadline))
+        self.deadline = datetime.timedelta(days=self.deadline)
         self.created = datetime.datetime.now()
 
     def is_active(self) -> bool:
@@ -36,7 +36,7 @@ class Teacher:
     last_name: str
 
     @staticmethod
-    def create_homework(text, deadline) -> Homework:
+    def create_homework(text: str, deadline: int) -> Homework:
         return Homework(text, deadline)
 
 
