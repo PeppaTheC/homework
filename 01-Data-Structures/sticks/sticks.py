@@ -1,4 +1,4 @@
-from collections import Counter
+# from collections import Counter
 
 
 def object_to_json_string(data) -> str:
@@ -167,11 +167,18 @@ def merge_two_lists(list1: list, list2: list) -> list:
     return merged_list
 
 
-def find_max(array: Counter, max: bool = True):
+class NotCounter(dict):
+    def most_common(self) -> list:
+        most_common_list = list(self.items())
+        most_common_list.sort(key=lambda item: item[1], reverse=True)
+        return most_common_list
+
+
+def find_max(array: NotCounter, max: bool = True):
     """Function returns the maximum/minimum values in the array
         or a sequence with maximum/minimum values"""
     if max:
-        max = array.most_common(1)[0][1]
+        max = array.most_common()[0][1]  # удалил (1)
         max_items = [item for item in array if array[item] == max]
         return max_items if len(max_items) > 1 else max_items[0]
     else:
@@ -199,14 +206,14 @@ print("done_3")
 varieties_list = [r"Gew\u00fcrztraminer", "Riesling", "Merlot", "Madera", "Tempranillo", "Red Blend"]
 
 statistics = {variety: {"average_price": [], "min_price": float('inf'), "max_price": -1,
-                        "most_common_region": Counter(), "most_common_country": Counter(),
+                        "most_common_region": NotCounter(), "most_common_country": NotCounter(),
                         "average_score": []} for variety in varieties_list}
 
-score_counter = Counter()
-price_counter = Counter()
+score_counter = NotCounter()
+price_counter = NotCounter()
 country_price = {}
 country_score = {}
-comments_counter = Counter()
+comments_counter = NotCounter()
 
 for item in wine_data_full:
     current_price = item.get('price')
@@ -269,14 +276,15 @@ for variety in varieties_list:
         statistics[variety]['average_score'] = round(sum(statistics[variety]['average_score'])
                                                      / len(statistics[variety]['average_score']), 2)
     if statistics[variety]['most_common_country']:
-        statistics[variety]['most_common_country'] = statistics[variety]['most_common_country'].most_common(1)[0][0]
+        statistics[variety]['most_common_country'] = statistics[variety]['most_common_country'].most_common()[0][0]
+
     if statistics[variety]['most_common_region']:
-        statistics[variety]['most_common_region'] = statistics[variety]['most_common_region'].most_common(1)[0][0]
+        statistics[variety]['most_common_region'] = statistics[variety]['most_common_region'].most_common()[0][0]
 
 print("done_5")
 
-country_price_counter = Counter({key: round(sum(value) / len(value), 5) for key, value in country_price.items()})
-country_score_counter = Counter({key: round(sum(value) / len(value), 5) for key, value in country_score.items()})
+country_price_counter = NotCounter({key: round(sum(value) / len(value), 5) for key, value in country_price.items()})
+country_score_counter = NotCounter({key: round(sum(value) / len(value), 5) for key, value in country_score.items()})
 
 common_statistics = {'most_expensive_wine': find_max(price_counter),
                      'cheapest_wine': find_max(price_counter, False),
