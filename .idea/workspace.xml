@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="264b8660-9946-4fb4-80dc-185e282e29bf" name="Default Changelist" comment="new_homework">
-      <change afterPath="$PROJECT_DIR$/03-fp-decorator/collatz_steps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03-fp-decorator/is_armstrong.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03-fp-decorator/projecteuler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/homework.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/homework.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="264b8660-9946-4fb4-80dc-185e282e29bf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/03-fp-decorator/applydecorator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/03-fp-decorator/find_best_solution.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/03-fp-decorator/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -46,8 +44,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.projecteuler">
-    <configuration name="collatz_steps" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.find_best_solution">
+    <configuration name="applydecorator" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="homework" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -59,7 +57,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/03-fp-decorator/collatz_steps.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/03-fp-decorator/applydecorator.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -68,7 +66,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="is_armstrong" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="find_best_solution" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="homework" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -80,7 +78,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/03-fp-decorator/is_armstrong.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/03-fp-decorator/find_best_solution.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -110,27 +108,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="modified_func" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="homework" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/02-Functions" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/02-Functions/modified_func.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="projecteuler" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="homework" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -152,13 +129,34 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="homework" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/03-fp-decorator" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/03-fp-decorator/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.find_best_solution" />
+        <item itemvalue="Python.test" />
+        <item itemvalue="Python.applydecorator" />
         <item itemvalue="Python.projecteuler" />
         <item itemvalue="Python.make_cache" />
-        <item itemvalue="Python.collatz_steps" />
-        <item itemvalue="Python.is_armstrong" />
-        <item itemvalue="Python.modified_func" />
       </list>
     </recent_temporary>
   </component>
@@ -201,7 +199,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573816711840</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="new_homework">
+      <created>1574089640582</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1574089640582</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -236,6 +241,11 @@
           <url>file://$PROJECT_DIR$/01-Data-Structures/sticks/sticks.py</url>
           <line>138</line>
           <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/03-fp-decorator/find_best_solution.py</url>
+          <line>51</line>
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
