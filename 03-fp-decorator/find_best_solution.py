@@ -118,11 +118,11 @@ def find_best():
     # round two
     print('ROUND TWO')
     N = {0: 0, 1: 1}
-    # ugly_fib(10 ** 4) # count work with big numbers, took the 3th place
+    # ugly_fib(10 ** 4) # count work with big numbers, took the 3rd place
     # print(results_ugly)
     dynamic_fib(10 ** 4)
     print(results_dynamic)
-    # local_cache_fib(10 ** 4) # doesn't either work, 2cnd place
+    # local_cache_fib(10 ** 4) # doesn't either work, 2nd place
 
     print(f'The best: {results_dynamic}')
 
