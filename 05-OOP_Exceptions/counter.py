@@ -21,12 +21,14 @@ def instances_counter(cls):
     return Wrapper
 
 
-@instances_counter
+# @instances_counter
 class User:
     pass
 
 
 if __name__ == '__main__':
+    User = instances_counter(User)
+    print(User.__name__)
     assert User.get_created_instances() == 0
     user, _, _ = User(), User(), User()
     assert user.get_created_instances() == 3
