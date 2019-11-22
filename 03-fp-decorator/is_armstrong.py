@@ -6,8 +6,8 @@ def is_armstrong(number):
 
 
 def test():
-    assert is_armstrong(153) is True
-    assert is_armstrong(10) is False
+    assert is_armstrong(153) is True, 'Число Армстронга'
+    assert is_armstrong(10) is False, 'Не число Армстронга'
 
 
 if __name__ == '__main__':
