@@ -25,10 +25,17 @@ class Homework:
         return datetime.datetime.now() < self.created + self.deadline
 
 
+@dataclass(frozen=True)
+class Person:
+    __slots__ = {'last_name', 'first_name', }
+    first_name: str
+    last_name: str
+
+
 @dataclass(unsafe_hash=True)
 class HomeworkResult:
     __slots__ = {'author', 'homework', 'solution', 'created', }
-    author: str
+    author: Person
     homework: Homework
     solution: str
 
@@ -36,21 +43,6 @@ class HomeworkResult:
         if not isinstance(self.homework, Homework):
             raise TypeError('You gave a not Homework object')
         self.created = datetime.datetime.now()
-
-# class HomeworkResult:
-#     def __init__(self, author, homework: Homework, solution: str):
-#             self.solution = solution
-#             self.author = author
-#             if not isinstance(homework, Homework):
-#                 raise TypeError('You gave a not Homework object')
-#             self.homework = homework
-#             self.created = datetime.datetime.now()
-
-@dataclass(frozen=True)
-class Person:
-    __slots__ = {'last_name', 'first_name', }
-    first_name: str
-    last_name: str
 
 
 class Student(Person):
@@ -95,10 +87,7 @@ if __name__ == '__main__':
 
     result_1 = good_student.do_homework(oop_hw, 'I have done this hw')
     result_2 = lazy_student.do_homework(docs_hw, 'I have done this hw too')
-    result_4 = good_student.do_homework(docs_hw, 'I have done this hw 4')
     result_3 = good_student.do_homework(docs_hw, 'I have done this hw too')
-    result_5 = good_student.do_homework(docs_hw, 'I have done this hw too')
-    # result_3 = lazy_student.do_homework(docs_hw, '123')
     try:
         result_4 = HomeworkResult(good_student, "fff", "Solution")
     except TypeError:
@@ -111,14 +100,7 @@ if __name__ == '__main__':
     temp_2 = Teacher.homework_done
     assert temp_1 == temp_2
 
-    opp_teacher.check_homework(result_2)
-    opp_teacher.check_homework(result_3)
-    opp_teacher.check_homework(result_4)
-    opp_teacher.check_homework(result_5)
-    print()
-
     print(Teacher.homework_done[oop_hw])
-    # print(Teacher.homework_done.values())
     for homework in Teacher.homework_done:
         print(homework, Teacher.homework_done[homework], sep='AAA')
     print(Teacher.reset_results())
