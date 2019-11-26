@@ -7,15 +7,11 @@ class CourseError(Exception):
     """Base exceptions of errors in course"""
 
 
-class HomeworkTypeError(CourseError):
-    """Type of object doesn't match type of Homework"""
-
-
 class DeadlineError(CourseError):
     """Deadline's up"""
 
 
-@dataclass()
+@dataclass(unsafe_hash=True)
 class Homework:
     __slots__ = {'text', 'deadline', 'created', }
     text: str
@@ -28,19 +24,16 @@ class Homework:
     def is_active(self) -> bool:
         return datetime.datetime.now() < self.created + self.deadline
 
-    def __hash__(self):
-        return id(self)
-
 
 class HomeworkResult:
     __slots__ = {'author', 'homework', 'solution', 'created', }
 
     def __init__(self, author, homework: Homework, solution: str):
+        self.solution = solution
         self.author = author
         if not isinstance(homework, Homework):
-            raise HomeworkTypeError('You gave a not Homework object')
+            raise TypeError('You gave a not Homework object')
         self.homework = homework
-        self.solution = solution
         self.created = datetime.datetime.now()
 
     def __gt__(self, other):
@@ -81,6 +74,7 @@ class Teacher(Person):
             cls.homework_done.pop(homework)
         else:
             cls.homework_done.clear()
+        return cls.homework_done
 
 
 if __name__ == '__main__':
@@ -98,7 +92,7 @@ if __name__ == '__main__':
     result_3 = lazy_student.do_homework(docs_hw, 'done')
     try:
         result_4 = HomeworkResult(good_student, "fff", "Solution")
-    except HomeworkTypeError:
+    except TypeError:
         print('There was an exception here')
     opp_teacher.check_homework(result_1)
     temp_1 = opp_teacher.homework_done
@@ -113,4 +107,4 @@ if __name__ == '__main__':
     print(Teacher.homework_done[oop_hw])
     for homework in Teacher.homework_done:
         print(homework)
-    Teacher.reset_results()
+    print(Teacher.reset_results())
