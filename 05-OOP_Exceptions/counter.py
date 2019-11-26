@@ -6,10 +6,10 @@ def instances_counter(cls):
         cls.counter += 1
         return true_new(cls, *args, **kwargs)
 
-    def get_created_instances(self: cls = None):
+    def get_created_instances(self: cls = None) -> int:
         return cls.counter
 
-    def reset_instances_counter(self: cls = None):
+    def reset_instances_counter(self: cls = None) -> int:
         counter = cls.counter
         cls.counter = 0
         return counter
