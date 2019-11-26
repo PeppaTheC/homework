@@ -100,7 +100,6 @@ if __name__ == '__main__':
     print(Teacher.homework_done[oop_hw])
     opp_teacher.check_homework(result_2)
     opp_teacher.check_homework(result_2)
-    opp_teacher.check_homework(result_3)
     for homework in Teacher.homework_done:
         print(homework, Teacher.homework_done[homework])
     print(Teacher.reset_results())
