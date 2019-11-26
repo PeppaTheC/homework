@@ -36,9 +36,6 @@ class HomeworkResult:
         self.homework = homework
         self.created = datetime.datetime.now()
 
-    def __gt__(self, other):
-        return len(self.solution) > other
-
 
 @dataclass(frozen=True)
 class Person:
@@ -63,13 +60,13 @@ class Teacher(Person):
 
     @classmethod
     def check_homework(cls, answer: HomeworkResult) -> bool:
-        if answer > 5:
+        if len(answer.solution) > 5:
             cls.homework_done[answer.homework].add(answer)
             return True
         return False
 
     @classmethod
-    def reset_results(cls, homework: Homework = None):
+    def reset_results(cls, homework: Homework = None) -> dict:
         if homework:
             cls.homework_done.pop(homework)
         else:
