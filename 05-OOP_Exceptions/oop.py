@@ -25,15 +25,16 @@ class Homework:
         return datetime.datetime.now() < self.created + self.deadline
 
 
+@dataclass(unsafe_hash=True)
 class HomeworkResult:
     __slots__ = {'author', 'homework', 'solution', 'created', }
+    author: str
+    homework: Homework
+    solution: str
 
-    def __init__(self, author, homework: Homework, solution: str):
-        self.solution = solution
-        self.author = author
-        if not isinstance(homework, Homework):
+    def __post_init__(self, ):
+        if not isinstance(self.homework, Homework):
             raise TypeError('You gave a not Homework object')
-        self.homework = homework
         self.created = datetime.datetime.now()
 
 
@@ -61,7 +62,8 @@ class Teacher(Person):
     @classmethod
     def check_homework(cls, answer: HomeworkResult) -> bool:
         if len(answer.solution) > 5:
-            cls.homework_done[answer.homework].add(answer)
+            if answer not in Teacher.homework_done[answer.homework]:
+                cls.homework_done[answer.homework].add(answer)
             return True
         return False
 
@@ -85,13 +87,16 @@ if __name__ == '__main__':
     docs_hw = opp_teacher.create_homework('Read docs', 5)
 
     result_1 = good_student.do_homework(oop_hw, 'I have done this hw')
-    result_2 = good_student.do_homework(docs_hw, 'I have done this hw too')
-    result_3 = lazy_student.do_homework(docs_hw, 'done')
+    result_2 = lazy_student.do_homework(docs_hw, 'I have done this hw too')
+    result_4 = good_student.do_homework(docs_hw, 'I have done this hw 4')
+    result_3 = good_student.do_homework(docs_hw, 'I have done this hw too')
+    # result_3 = lazy_student.do_homework(docs_hw, '123')
     try:
         result_4 = HomeworkResult(good_student, "fff", "Solution")
     except TypeError:
         print('There was an exception here')
     opp_teacher.check_homework(result_1)
+
     temp_1 = opp_teacher.homework_done
 
     advanced_python_teacher.check_homework(result_1)
@@ -100,8 +105,10 @@ if __name__ == '__main__':
 
     opp_teacher.check_homework(result_2)
     opp_teacher.check_homework(result_3)
+    opp_teacher.check_homework(result_4)
+    print()
 
     print(Teacher.homework_done[oop_hw])
     for homework in Teacher.homework_done:
-        print(homework)
+        print(homework, Teacher.homework_done[homework])
     print(Teacher.reset_results())
