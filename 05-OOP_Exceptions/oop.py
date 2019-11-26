@@ -11,14 +11,12 @@ class DeadlineError(CourseError):
     """Deadline's up"""
 
 
-@dataclass(unsafe_hash=True)
 class Homework:
     __slots__ = {'text', 'deadline', 'created', }
-    text: str
-    deadline: int
 
-    def __post_init__(self):
-        self.deadline = datetime.timedelta(days=self.deadline)
+    def __init__(self, text: str, deadline: int):
+        self.text = text
+        self.deadline = datetime.timedelta(days=deadline)
         self.created = datetime.datetime.now()
 
     def is_active(self) -> bool:
@@ -32,16 +30,15 @@ class Person:
     last_name: str
 
 
-@dataclass(unsafe_hash=True)
 class HomeworkResult:
     __slots__ = {'author', 'homework', 'solution', 'created', }
-    author: Person
-    homework: Homework
-    solution: str
 
-    def __post_init__(self, ):
-        if not isinstance(self.homework, Homework):
+    def __init__(self, author: Person, homework: Homework, solution: str):
+        self.author = author
+        if not isinstance(homework, Homework):
             raise TypeError('You gave a not Homework object')
+        self.homework = homework
+        self.solution = solution
         self.created = datetime.datetime.now()
 
 
@@ -86,8 +83,8 @@ if __name__ == '__main__':
     docs_hw = opp_teacher.create_homework('Read docs', 5)
 
     result_1 = good_student.do_homework(oop_hw, 'I have done this hw')
-    result_2 = lazy_student.do_homework(docs_hw, 'I have done this hw too')
-    result_3 = good_student.do_homework(docs_hw, 'I hav')
+    result_2 = good_student.do_homework(docs_hw, 'I have done this hw too')
+    result_3 = lazy_student.do_homework(docs_hw, 'done')
     try:
         result_4 = HomeworkResult(good_student, "fff", "Solution")
     except TypeError:
@@ -101,6 +98,9 @@ if __name__ == '__main__':
     assert temp_1 == temp_2
 
     print(Teacher.homework_done[oop_hw])
+    opp_teacher.check_homework(result_2)
+    opp_teacher.check_homework(result_2)
+    opp_teacher.check_homework(result_3)
     for homework in Teacher.homework_done:
-        print(homework, Teacher.homework_done[homework], sep='AAA')
+        print(homework, Teacher.homework_done[homework])
     print(Teacher.reset_results())
