@@ -17,34 +17,6 @@ class Quaternion:
     def __ne__(self, other):
         return not self.__eq__(other)
 
-    def __lt__(self, other):
-        return self.w < other.w if self.w != other.w \
-            else self.x < other.x if self.x != other.x \
-            else self.y < other.y if self.y != other.y \
-            else self.z < other.z if self.z != other.z \
-            else False
-
-    def __gt__(self, other):
-        return self.w > other.w if self.w != other.w \
-            else self.x > other.x if self.x != other.x \
-            else self.y > other.y if self.y != other.y \
-            else self.z > other.z if self.z != other.z \
-            else False
-
-    def __le__(self, other):
-        return self.w < other.w if self.w != other.w \
-            else self.x < other.x if self.x != other.x \
-            else self.y < other.y if self.y != other.y \
-            else self.z < other.z if self.z != other.z \
-            else True
-
-    def __ge__(self, other):
-        return self.w > other.w if self.w != other.w \
-            else self.x > other.x if self.x != other.x \
-            else self.y > other.y if self.y != other.y \
-            else self.z > other.z if self.z != other.z \
-            else True
-
     def __abs__(self):
         return math.sqrt(self.w * self.w + self.x * self.x + self.y * self.y + self.z * self.z)
 
