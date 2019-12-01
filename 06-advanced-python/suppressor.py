@@ -1,18 +1,14 @@
 class Suppressor:
     __slots__ = {'exception'}
 
-    def __init__(self, exception: type):
+    def __init__(self, *exception):
         self.exception = exception
 
     def __enter__(self):
         pass
 
     def __exit__(self, exp_type, exp_value, traceback):
-        if exp_type == self.exception or issubclass(exp_type, self.exception):
-            return True
-        return False
-
-    pass
+        return exp_type in self.exception or issubclass(exp_type, self.exception)
 
 
 with Suppressor(ZeroDivisionError):
