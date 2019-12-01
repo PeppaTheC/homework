@@ -8,9 +8,9 @@ class Suppressor:
         pass
 
     def __exit__(self, exp_type, exp_value, traceback):
-        return exp_type in self.exception or issubclass(exp_type, self.exception)
+        return issubclass(exp_type, self.exception)
 
 
-with Suppressor(ZeroDivisionError):
+with Suppressor(ArithmeticError):
     1 / 0
 print("It's fine")
