@@ -8,7 +8,7 @@ class Suppressor:
         pass
 
     def __exit__(self, exp_type, exp_value, traceback):
-        if exp_type == self.exception:
+        if exp_type == self.exception or issubclass(exp_type, self.exception):
             return True
         return False
 
