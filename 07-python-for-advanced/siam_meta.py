@@ -1,7 +1,7 @@
 """This module contains realization of  a metaclass SiamMeta.
 
-SiamMeta a special metaclass, class instances created using SiamMeta
-have the following properties:
+SiamMeta a special metaclass. Class instances created using SiamMeta
+class have the following properties:
 * objects created with the same attributes will be the same object
 * objects created with different attributes will be different objects
 * any object has the ability to access other objects same class
@@ -97,6 +97,7 @@ class SiamObj(metaclass=SiamMeta):
 
 
 if __name__ == '__main__':
+    print(help(__name__))
     unit1 = SiamObj('1', '2', a=1)
     unit2 = SiamObj('1', '2', a=1)
     assert unit1 is unit2
