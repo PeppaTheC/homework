@@ -23,12 +23,13 @@ class GraphIterator:
         self.visited, self.queue = [], deque(tuple(self.graph.keys()))
         while self.queue:
             vertex = self.queue.popleft()
+            if vertex not in self.visited:
+                self.visited.append(vertex)
             for neighbour in self.graph[vertex]:
                 if neighbour not in self.visited:
                     self.visited.append(neighbour)
-                    self.queue.append(neighbour)
-            if vertex not in self.visited:
-                self.visited.append(vertex)
+                    self.queue.appendleft(neighbour)
+
 
     def __next__(self):
         try:
