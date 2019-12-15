@@ -30,7 +30,6 @@ class GraphIterator:
                     self.visited.append(neighbour)
                     self.queue.appendleft(neighbour)
 
-
     def __next__(self):
         try:
             return self.visited.pop(0)
