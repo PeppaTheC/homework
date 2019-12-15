@@ -5,7 +5,6 @@ from PyQt5.QtCore import pyqtSignal, pyqtSlot
 from PyQt5.QtWidgets import QMainWindow, QApplication, QDialog
 
 
-
 class ChatEnter(QDialog):
     set_name = pyqtSignal(str)
 
