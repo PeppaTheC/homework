@@ -1,8 +1,13 @@
+"""This module contains realization of TCP Client
+
+Client can receive and send messages to server by TCP/IP protocol.
+"""
+
 import socket as sock
 from PyQt5.QtCore import QThread, pyqtSignal, pyqtSlot
 
 HEADER_LENGTH = 10
-IP = 'localhost'
+IP = '192.168.56.1'
 PORT = 9000
 
 
