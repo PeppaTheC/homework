@@ -1,4 +1,4 @@
-"""This module contains UI realization of chat."""
+"""This module contains GUI realization of chat."""
 
 from client import Client
 
