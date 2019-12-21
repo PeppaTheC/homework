@@ -95,7 +95,7 @@ class Transport:
         loaded_cargo: Type of goods loaded on transport
     """
 
-    def __init__(self, start_position: int):
+    def __init__(self, start_position: Point):
         self.position = start_position
         self.steps_til_point = 0
         self.destination_point = None
@@ -111,8 +111,8 @@ class Transport:
         self.loaded_cargo = cargo
         self.destination_point = destination
 
-        self.steps_til_point = abs(self.position - self.destination_point.get_position())
-        self.position = self.destination_point.get_position()
+        self.steps_til_point = abs(self.position.get_position() - self.destination_point.get_position())
+        self.position = self.destination_point
 
     def make_step(self):
         """Make on step into the time, if transport arrive to point - unload"""
@@ -134,6 +134,11 @@ class Transport:
 
 
 class LoggingTransport(Transport):
+    """Special class for logging the transport actions.
+
+    Attributes:
+        number: Each type of transport get his unique number.
+    """
     def __init__(self, number, *args, **kwargs):
         self.number = number
         super().__init__(*args, **kwargs)
@@ -141,20 +146,20 @@ class LoggingTransport(Transport):
     def drive(self, destination: Point, cargo: Cargo = None):
         """Logger for transport drive to point."""
         if cargo:
-            print(f'{self} pick up cargo and go to {destination}')
+            print(f'{self} took cargo in the {self.position}')
         else:
-            print(f'{self} go back to {destination}')
+            print(f'{self} turned around to the {destination}')
         super().drive(destination, cargo)
 
     def make_step(self):
         """Logger for timing drive to point."""
         if self.steps_til_point:
-            print(f'{self} goes to {self.destination_point}')
+            print(f'{self} went to the {self.destination_point}')
         super().make_step()
 
     def unload(self):
         """Logger for unload the cargo into point."""
-        print(f'{self} unload cargo at {self.destination_point}')
+        print(f'{self} unloaded  in the {self.destination_point}')
         super().unload()
 
     def __str__(self):
@@ -185,7 +190,7 @@ def delivery(main_point: StoragePoint, transport: Transport):
     """
     if main_point.is_empty() or transport.busy():
         return
-    if transport.position != main_point.get_position():
+    if transport.position.get_position() != main_point.get_position():
         transport.drive(main_point)
         return
     cargo = main_point.cargo_out()
@@ -196,7 +201,7 @@ def delivery(main_point: StoragePoint, transport: Transport):
 
 
 def get_destination_point(destination: str) -> Point:
-    """Gives an house point for map symbol"""
+    """Function gives a house point for map symbol"""
     return {'A': warehouse_a, 'B': warehouse_b}[destination]
 
 
@@ -205,9 +210,9 @@ if __name__ == '__main__':
 
     factory, port = Factory(0, map(Cargo, map(get_destination_point, input()))), Port(1, [])
 
-    truck_1, truck_2 = Truck(1, factory.get_position()), Truck(2, factory.get_position())
+    truck_1, truck_2 = Truck(1, factory), Truck(2, factory)
 
-    ship1 = Ship(1, port.get_position())
+    ship1 = Ship(1, port)
 
     count_steps = 0
     while any((truck_1.busy(), truck_2.busy(), ship1.busy(), not factory.is_empty(), not port.is_empty())):
