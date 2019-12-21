@@ -50,7 +50,7 @@ class StoragePoint(Point, Storage):
 
 
 class Warehouse(Point):
-    """On water building."""
+    """Simple building."""
 
     def __init__(self, name, *args, **kwargs):
         self.name = name
@@ -152,13 +152,13 @@ class LoggingTransport(Transport):
         super().drive(destination, cargo)
 
     def make_step(self):
-        """Logger for timing drive to point."""
+        """Logger for driving to point."""
         if self.steps_til_point:
             print(f'{self} went to the {self.destination_point}')
         super().make_step()
 
     def unload(self):
-        """Logger for unload the cargo into point."""
+        """Logger for unload goods into point."""
         print(f'{self} unloaded  in the {self.destination_point}')
         super().unload()
 
