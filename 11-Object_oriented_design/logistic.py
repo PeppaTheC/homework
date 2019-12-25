@@ -93,9 +93,16 @@ class Transport:
         steps_til_point: Number of steps to point.
         destination_point: Where transport is going to
         loaded_cargo: Type of goods loaded on transport
+        global_main_storage: 1st cargo input at the map
+        local_storage:  Storage point where transport  pick ups cargoes
     """
 
-    def __init__(self, start_position: Point):
+    def __init__(self, start_position: StoragePoint, global_main_storage: StoragePoint = None):
+        if global_main_storage is None:
+            global_main_storage = start_position
+        self.global_main_storage = global_main_storage
+        self.local_storage = start_position
+
         self.position = start_position
         self.steps_til_point = 0
         self.destination_point = None
@@ -132,6 +139,25 @@ class Transport:
         """Checks if the transport is in transit."""
         return bool(self.steps_til_point) or bool(self.loaded_cargo)
 
+    def delivery(self):
+        """The function sends the transport to the point
+
+        The function checks stock balances and transport bossiness.
+        After checking the current position, if the transport is not in
+        the storage point send him to storage point back. Else transport pick up
+        goods and  goes to the point  destination of the goods.
+        """
+        if (self.local_storage.is_empty() and self.global_main_storage.is_empty()) or self.busy():
+            return
+        if self.position.get_position() != self.local_storage.get_position():
+            self.drive(self.local_storage)
+            return
+        if self.local_storage.is_empty():
+            return
+        cargo = self.local_storage.cargo_out()
+        point = cargo.destination
+        self.drive(point, cargo)
+
 
 class LoggingTransport(Transport):
     """Special class for logging the transport actions.
@@ -139,6 +165,7 @@ class LoggingTransport(Transport):
     Attributes:
         number: Each type of transport get his unique number.
     """
+
     def __init__(self, number, *args, **kwargs):
         self.number = number
         super().__init__(*args, **kwargs)
@@ -168,36 +195,17 @@ class LoggingTransport(Transport):
 
 class Truck(LoggingTransport):
     """Ground transportation."""
-    pass
+
+    def drive(self, destination: Point, cargo: Cargo = None):
+        """Truck can't go throw water"""
+        if destination is warehouse_a:
+            destination = port
+        super().drive(destination, cargo)
 
 
 class Ship(LoggingTransport):
     """Water transportation."""
     pass
-
-
-def delivery(main_point: StoragePoint, transport: Transport):
-    """The function sends the transport to the point
-
-    The function checks stock balances and transport bossiness.
-    After checking the current position, if the transport is not in
-    the storage point send him to storage point back. Else transport pick up
-    goods and  goes to the point  destination of the goods.
-
-    Args:
-        main_point: The main transport storage point where the transport pick up goods.
-        transport: The type of transport that delivers goods.
-    """
-    if main_point.is_empty() or transport.busy():
-        return
-    if transport.position.get_position() != main_point.get_position():
-        transport.drive(main_point)
-        return
-    cargo = main_point.cargo_out()
-    point = cargo.destination
-    if transport in (truck_1, truck_2) and point is warehouse_a:
-        point = port
-    transport.drive(point, cargo)
 
 
 def get_destination_point(destination: str) -> Point:
@@ -212,14 +220,13 @@ if __name__ == '__main__':
 
     truck_1, truck_2 = Truck(1, factory), Truck(2, factory)
 
-    ship1 = Ship(1, port)
+    ship1 = Ship(1, port, factory)
 
     count_steps = 0
     while any((truck_1.busy(), truck_2.busy(), ship1.busy(), not factory.is_empty(), not port.is_empty())):
         print(f"Turn number {count_steps}\n")
-        delivery(factory, truck_1)
-        delivery(factory, truck_2)
-        delivery(port, ship1)
+        for transport in (truck_1, truck_2, ship1):
+            transport.delivery()
         for transport in (truck_1, truck_2, ship1):
             transport.make_step()
         count_steps += 1
