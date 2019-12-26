@@ -85,6 +85,17 @@ class Cargo:
         self.destination = destination
 
 
+class Route:
+    """Transport routes"""
+
+    def __init__(self, road_to_a: Point, road_to_b: Point = None):
+        self.route = {'A': road_to_a, 'B': road_to_b}
+
+    def __add_new_road(self, name: str, point: Point):
+        """Adds new road to routes"""
+        self.route[name] = point
+
+
 class Transport:
     """Transport carrying goods.
 
@@ -97,9 +108,10 @@ class Transport:
         local_storage:  Storage point where transport  pick ups cargoes
     """
 
-    def __init__(self, start_position: StoragePoint, global_main_storage: StoragePoint = None):
+    def __init__(self, start_position: StoragePoint, route: Route, global_main_storage: StoragePoint = None, ):
         if global_main_storage is None:
             global_main_storage = start_position
+        self.route = route
         self.global_main_storage = global_main_storage
         self.local_storage = start_position
 
@@ -155,7 +167,7 @@ class Transport:
         if self.local_storage.is_empty():
             return
         cargo = self.local_storage.cargo_out()
-        point = cargo.destination
+        point = self.route.route[cargo.destination.name]
         self.drive(point, cargo)
 
 
@@ -196,16 +208,9 @@ class LoggingTransport(Transport):
 class Truck(LoggingTransport):
     """Ground transportation."""
 
-    def drive(self, destination: Point, cargo: Cargo = None):
-        """Truck can't go throw water"""
-        if destination is warehouse_a:
-            destination = port
-        super().drive(destination, cargo)
-
 
 class Ship(LoggingTransport):
     """Water transportation."""
-    pass
 
 
 def get_destination_point(destination: str) -> Point:
@@ -217,10 +222,11 @@ if __name__ == '__main__':
     warehouse_a, warehouse_b = Warehouse('A', 5), Warehouse('B', 5)
 
     factory, port = Factory(0, map(Cargo, map(get_destination_point, input()))), Port(1, [])
+    track_route = Route(port, warehouse_b)
+    ship_route = Route(warehouse_a)
+    truck_1, truck_2 = Truck(1, factory, track_route), Truck(2, factory, track_route)
 
-    truck_1, truck_2 = Truck(1, factory), Truck(2, factory)
-
-    ship1 = Ship(1, port, factory)
+    ship1 = Ship(1, port, ship_route, factory)
 
     count_steps = 0
     while any((truck_1.busy(), truck_2.busy(), ship1.busy(), not factory.is_empty(), not port.is_empty())):
