@@ -41,20 +41,27 @@ class Point:
         """Returns current positions """
         return self.coordinate
 
+    def get_name(self):
+        """Return map name of object"""
+        return "object doesn't have a map name"
+
 
 class StoragePoint(Point, Storage):
     """A building that can save goods for further delivering."""
 
-    def __init__(self, coordinate: int = 0, cargoes=None):
-        super(StoragePoint, self).__init__(coordinate, cargoes)
 
-
-class Warehouse(Point):
+class Warehouse(StoragePoint):
     """Simple building."""
 
-    def __init__(self, name, *args, **kwargs):
+    def __init__(self, name, coordinate: int = 0, cargoes=None):
+        if cargoes is None:
+            cargoes = []
         self.name = name
-        super().__init__(*args, **kwargs)
+        super(Warehouse, self).__init__(coordinate, cargoes)
+
+    def get_name(self):
+        """Return map name of object"""
+        return self.name
 
     def __str__(self):
         return f"Warehouse{self.name}"
@@ -84,16 +91,28 @@ class Cargo:
     def __init__(self, destination: Point):
         self.destination = destination
 
+    def get_cargo_destination_name(self):
+        return self.destination.get_name()
+
 
 class Route:
     """Transport routes"""
 
-    def __init__(self, road_to_a: Point, road_to_b: Point = None):
-        self.route = {'A': road_to_a, 'B': road_to_b}
+    def __init__(self, names: str, points: list):
+        self.route = {}
+        for name, point in zip(names, points):
+            self.route[name] = point
 
     def __add_new_road(self, name: str, point: Point):
         """Adds new road to routes"""
         self.route[name] = point
+
+    def get_road(self, name: str):
+        """Return road by name"""
+        try:
+            return self.route[name]
+        except KeyError:
+            return None
 
 
 class Transport:
@@ -167,7 +186,7 @@ class Transport:
         if self.local_storage.is_empty():
             return
         cargo = self.local_storage.cargo_out()
-        point = self.route.route[cargo.destination.name]
+        point = self.route.get_road(cargo.get_cargo_destination_name())
         self.drive(point, cargo)
 
 
@@ -222,8 +241,8 @@ if __name__ == '__main__':
     warehouse_a, warehouse_b = Warehouse('A', 5), Warehouse('B', 5)
 
     factory, port = Factory(0, map(Cargo, map(get_destination_point, input()))), Port(1, [])
-    track_route = Route(port, warehouse_b)
-    ship_route = Route(warehouse_a)
+    track_route = Route("AB", [port, warehouse_b])
+    ship_route = Route("A", [warehouse_a])
     truck_1, truck_2 = Truck(1, factory, track_route), Truck(2, factory, track_route)
 
     ship1 = Ship(1, port, ship_route, factory)
