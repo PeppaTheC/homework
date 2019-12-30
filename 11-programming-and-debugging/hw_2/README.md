@@ -1,4 +1,4 @@
-#Answers:
+# Answers:
 1) Which system call will be used most often (strace)?
 
     command: `$ sudo strace -o trace_hw_2.txt -c ./hw_2.py  -p INPUT_PATH -s INPUT_SHA256`
