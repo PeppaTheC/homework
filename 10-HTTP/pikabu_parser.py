@@ -2,6 +2,10 @@
 
 Pikabu parser gets specified number of posts and counts all tags.
 
+Info: to get cookie you need to go and log in at https://pikabu.ru,
+then open a Request Headers (Request URL: https://pikabu.ru/) and copy cookie to file user_cookie as
+cookie = ...(ur cookie)
+
     Typical usage example:
 
         number_of_posts = 100
@@ -14,12 +18,13 @@ from collections import Counter
 import requests
 import user_cookie
 
+
 HEADERS = {'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
            'Accept-Encoding': 'gzip, deflate, br',
            'Accept-Language': 'ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3',
            'Connection': 'keep-alive',
            'Cookie': user_cookie.cookie,
-           'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0',
+           'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36 OPR/65.0.3467.78 (Edition Yx)',
            'Upgrade-Insecure-Requests': '1'}
 
 
