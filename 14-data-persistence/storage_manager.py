@@ -105,7 +105,7 @@ class RedisDB(DB):
         self.db.set(key, data)
 
     def get_data(self, key, protocol: str):
-        return self.db.get(key).findall()
+        return self.db.get(key)
 
 
 class MongoDB(DB):
@@ -198,3 +198,5 @@ if __name__ == '__main__':
     test_file_db()
     test_redis_db()
     test_mongo_db()
+    pass
+
