@@ -131,12 +131,12 @@ supported_dbs = {'file': FileDB,
                  }
 
 
-def save(data, protocol: str, db: str, place: dict, key):
+def save(data, key: str, *args, protocol: str, db: str, place: dict, ):
     db = supported_dbs.get(db)(**place)
     db.set_data(key, data, protocol)
 
 
-def get(protocol: str, db: str, place: dict, key: str):
+def get(key: str, *args, protocol: str, db: str, place: dict, ):
     db = supported_dbs.get(db)(**place)
     return db.get_data(key, protocol)
 
@@ -150,11 +150,9 @@ def test_file_db():
             {
                 'path': './'
             },
-        'key': 'text.txt'
-
     }
-    save(a, **config)
-    print(get(**config))
+    save(a, 'text.txt', **config)
+    print(get('text.txt', **config))
 
 
 def test_redis_db():
@@ -167,12 +165,10 @@ def test_redis_db():
                 'host': 'localhost',
                 'port': 6379
             },
-        'key': 'redis_data'
-
     }
 
-    save(a, **config)
-    print(get(**config))
+    save(a, 'redis-data', **config)
+    print(get('redis-data', **config))
 
 
 def test_mongo_db():
@@ -186,12 +182,10 @@ def test_mongo_db():
                 'port': 27017,
                 'name': 'test-database'
             },
-        'key': 'test-collection'
-
     }
 
-    save(a, **config)
-    print(get(**config))
+    save(a, 'test-collection', **config)
+    print(get('redis-data', **config))
 
 
 if __name__ == '__main__':
@@ -199,4 +193,3 @@ if __name__ == '__main__':
     test_redis_db()
     test_mongo_db()
     pass
-
