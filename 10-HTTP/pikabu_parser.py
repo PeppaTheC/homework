@@ -41,7 +41,7 @@ def pikabu_parser(session: requests.Session, num_posts: int) -> Counter:
     """
     count = Counter()
     current_post = 0
-    url = 'https://pikabu.ru/subs'
+    url = 'https://pikabu.ru/new/subs'
     max_pages_number = num_posts // 10 if not num_posts % 10 else num_posts // 10 + 1
     for page in range(max_pages_number + 1):
         paramload = {'page': str(page)}
